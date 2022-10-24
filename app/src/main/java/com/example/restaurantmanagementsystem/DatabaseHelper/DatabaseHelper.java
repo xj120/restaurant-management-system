@@ -1,21 +1,25 @@
 package com.example.restaurantmanagementsystem.DatabaseHelper;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 import android.widget.Toast;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String db_name = "restaurant.db";
+    private static final String TAG = "DatabaseHelper";
 
     private Context mContext;
 
     public static final String CREATE_CUSTOMER = "CREATE TABLE Customer ("
-            + "customer_id INTEGER NOT NULL,"
+            + "customer_id INTEGER PRIMARY KEY AUTOINCREMENT,"
             + "password TEXT NOT NULL,"
-            + "phone TEXT,"
-            + "PRIMARY KEY (customer_id));";
+            + "phone TEXT );";
 
     public static final String CREATE_DININGTABLE = "CREATE TABLE \"Diningtable\" (\n" +
             "  \"table_id\" INTEGER NOT NULL,\n" +
@@ -26,27 +30,24 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             ");";
 
     public static final String CREATE_BILL = "CREATE TABLE \"Bill\" (\n" +
-            "  \"bill_id\" INTEGER NOT NULL,\n" +
+            "  \"bill_id\" INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
             "  \"customer_id\" INTEGER,\n" +
             "  \"price\" integer,\n" +
-            "  PRIMARY KEY (\"bill_id\"),\n" +
             "  CONSTRAINT \"customer_id\" FOREIGN KEY (\"customer_id\") REFERENCES \"Customer\" (\"customer_id\") ON DELETE NO ACTION ON UPDATE NO ACTION\n" +
             ");";
 
     public static final String CREATE_EMPLOYEE = "CREATE TABLE \"Employee\" (\n" +
-            "  \"emp_id\" INTEGER NOT NULL,\n" +
+            "  \"emp_id\" INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
             "  \"name\" TEXT,\n" +
             "  \"phone\" TEXT,\n" +
-            "  \"password\" TEXT,\n" +
-            "  PRIMARY KEY (\"emp_id\")\n" +
+            "  \"password\" TEXT\n" +
             ");";
 
     public static final String CREATE_MANAGER = "CREATE TABLE \"Manager\" (\n" +
-            "  \"man_id\" INTEGER NOT NULL,\n" +
+            "  \"man_id\" INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
             "  \"password\" TEXT,\n" +
             "  \"phone\" TEXT,\n" +
-            "  \"name\" TEXT,\n" +
-            "  PRIMARY KEY (\"man_id\")\n" +
+            "  \"name\" TEXT\n" +
             ");";
 
     public static final String CREATE_MENU = "CREATE TABLE \"Menu\" (\n" +
@@ -71,6 +72,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         mContext = context;
     }
 
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_CUSTOMER);
@@ -86,5 +88,81 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+    }
+
+    public boolean insertCustomer(String phone, String password) {
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put("password", password);
+            values.put("phone", phone);
+            db.insert("Customer", null, values);
+            return true;
+        }catch (Exception e)
+        {
+            Log.e(TAG, "insertCustomer: insert failed!", e);
+            System.out.println(e);
+            return false;
+        }
+    }
+
+    public boolean checkCustomerPhone(String phone) {
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor cursor = db.query("Customer",null, "phone=?",
+                    new String[]{phone}, null, null, null);
+            if(cursor.moveToFirst()){
+                cursor.close();
+                return true;
+            }
+            else{
+                cursor.close();
+                return false;
+            }
+        }catch (Exception e){
+            Log.e(TAG, "checkCustomerPhone: query failed!", e);
+            System.out.println(e);
+            return false;
+        }
+    }
+
+    public boolean customerLogin(String phone, String password) {
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor cursor = db.query("Customer",null, "phone=? and password=?",
+                    new String[]{phone, password}, null, null, null);
+            if(cursor.moveToFirst()){
+                cursor.close();
+                return true;
+            }
+            else{
+                cursor.close();
+                return false;
+            }
+        }catch (Exception e){
+            Log.e(TAG, "customerLogin: login failed!", e);
+            System.out.println(e);
+            return false;
+        }
+    }
+
+    public boolean managerLogin(String phone, String password) {
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor cursor = db.query("Manager",null, "phone=? and password=?",
+                    new String[]{phone, password}, null, null, null);
+            if(cursor.moveToFirst()){
+                cursor.close();
+                return true;
+            }
+            else{
+                cursor.close();
+                return false;
+            }
+        }catch (Exception e){
+            Log.e(TAG, "managerLogin: login failed!", e);
+            System.out.println(e);
+            return false;
+        }
     }
 }

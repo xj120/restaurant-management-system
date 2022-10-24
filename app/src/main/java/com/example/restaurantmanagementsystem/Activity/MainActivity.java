@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.initialization_layout);
 
-        dbHelper = new DatabaseHelper(this, "Restaurant.db", null, 1);
+        dbHelper = new DatabaseHelper(this, "Restaurant.db", null, 2);
         dbHelper.getWritableDatabase();
 
         Button customerButton = (Button) findViewById(R.id.customer_mode);
