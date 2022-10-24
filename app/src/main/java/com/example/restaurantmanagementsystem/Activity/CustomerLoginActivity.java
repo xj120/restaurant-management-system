@@ -7,9 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.restaurantmanagementsystem.DatabaseHelper.DatabaseHelper;
 import com.example.restaurantmanagementsystem.R;
 
 public class CustomerLoginActivity extends AppCompatActivity implements View.OnClickListener{
+
+    private DatabaseHelper dbhelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
