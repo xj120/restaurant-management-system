@@ -16,10 +16,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private Context mContext;
 
-    public static final String CREATE_CUSTOMER = "CREATE TABLE Customer ("
-            + "customer_id INTEGER PRIMARY KEY AUTOINCREMENT,"
-            + "password TEXT NOT NULL,"
-            + "phone TEXT );";
+    public static final String CREATE_CUSTOMER = "CREATE TABLE \"Customer\" (\n" +
+            "  \"customer_id\" INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
+            "  \"password\" TEXT NOT NULL,\n" +
+            "  \"phone\" TEXT\n" +
+            ");";
 
     public static final String CREATE_DININGTABLE = "CREATE TABLE \"Diningtable\" (\n" +
             "  \"table_id\" INTEGER NOT NULL,\n" +
@@ -165,4 +166,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+
+
 }
