@@ -29,7 +29,7 @@
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:text="商家管理" />
+        android:text="菜单管理" />
 
     <Button
         android:id="@+id/button3"

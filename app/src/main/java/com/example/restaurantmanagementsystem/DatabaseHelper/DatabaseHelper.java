@@ -61,6 +61,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String CREATE_ORDER = "CREATE TABLE \"Order\" (\n" +
             "  \"order_id\" INTEGER NOT NULL,\n" +
             "  \"dish_name\" TEXT NOT NULL,\n" +
+            "  \"customer_id\" integer,\n" +
             "  \"quantity\" integer,\n" +
             "  \"price\" integer,\n" +
             "  \"state\" TEXT,\n" +
