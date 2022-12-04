@@ -2,7 +2,14 @@ package com.example.restaurantmanagementsystem.Dish;
 
 public class Dish {
     private String dish_name;
-    private double price;
+    private int price;
+
+    public Dish(String dish_name, int price, int quantity) {
+        this.dish_name = dish_name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
     private int quantity;
 
     public String getDish_name() {
@@ -17,7 +24,7 @@ public class Dish {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
