@@ -33,15 +33,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public static final String CREATE_BILL = "CREATE TABLE \"Bill\" (\n" +
             "  \"bill_id\" INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
             "  \"customer_id\" INTEGER,\n" +
-            "  \"price\" integer,\n" +
+            "  \"price\" real,\n" +
             "  CONSTRAINT \"customer_id\" FOREIGN KEY (\"customer_id\") REFERENCES \"Customer\" (\"customer_id\") ON DELETE NO ACTION ON UPDATE NO ACTION\n" +
             ");";
 
     public static final String CREATE_EMPLOYEE = "CREATE TABLE \"Employee\" (\n" +
             "  \"emp_id\" INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
             "  \"name\" TEXT,\n" +
-            "  \"phone\" TEXT,\n" +
-            "  \"password\" TEXT\n" +
+            "  \"phone\" TEXT\n" +
             ");";
 
     public static final String CREATE_MANAGER = "CREATE TABLE \"Manager\" (\n" +
@@ -53,8 +52,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     public static final String CREATE_MENU = "CREATE TABLE \"Menu\" (\n" +
             "  \"dish_name\" TEXT NOT NULL,\n" +
-            "  \"price\" integer,\n" +
-            "  \"sales\" integer,\n" +
+            "  \"price\" real,\n" +
             "  PRIMARY KEY (\"dish_name\")\n" +
             ");";
 
@@ -63,10 +61,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "  \"dish_name\" TEXT NOT NULL,\n" +
             "  \"customer_id\" integer,\n" +
             "  \"quantity\" integer,\n" +
-            "  \"price\" integer,\n" +
+            "  \"price\" real,\n" +
             "  \"state\" TEXT,\n" +
             "  PRIMARY KEY (\"order_id\", \"dish_name\"),\n" +
-            "  CONSTRAINT \"dish_name\" FOREIGN KEY (\"dish_name\") REFERENCES \"Menu\" (\"dish_name\") ON DELETE NO ACTION ON UPDATE NO ACTION\n" +
+            "  CONSTRAINT \"dish_name\" FOREIGN KEY (\"dish_name\") REFERENCES \"Menu\" (\"dish_name\") ON DELETE NO ACTION ON UPDATE NO ACTION,\n" +
+            "  CONSTRAINT \"customer_id\" FOREIGN KEY (\"customer_id\") REFERENCES \"Customer\" (\"customer_id\") ON DELETE NO ACTION ON UPDATE NO ACTION\n" +
             ");";
 
     public DatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {

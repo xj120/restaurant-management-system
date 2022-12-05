@@ -3,14 +3,12 @@ package com.example.restaurantmanagementsystem.User;
 public abstract class User {
     private int user_id;
 
-    public User(int user_id, String account, String password) {
+    public User(int user_id, String account) {
         this.user_id = user_id;
         this.account = account;
-        this.password = password;
     }
 
     private String account;
-    private String password;
 
     public UserType getType() {
         return type;
@@ -38,11 +36,4 @@ public abstract class User {
         this.account = account;
     }
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
 }
