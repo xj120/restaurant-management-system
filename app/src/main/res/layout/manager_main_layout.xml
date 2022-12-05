@@ -20,25 +20,25 @@
         android:gravity="center" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/employee_manage"
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:text="员工管理" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/menu_manage"
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:text="菜单管理" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/table_manage"
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:text="餐桌状态管理" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/bill_manage"
         android:layout_width="match_parent"
         android:layout_height="75dp"
         android:text="账目管理" />
