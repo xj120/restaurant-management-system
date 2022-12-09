@@ -24,7 +24,7 @@
         android:id="@+id/employee_manage"
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:background="@color/yellow"
+        android:background="@color/orange"
         android:textColor="@color/white"
         android:layout_marginTop="15dp"
         android:text="员工管理" />
@@ -33,7 +33,7 @@
         android:id="@+id/menu_manage"
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:background="@color/yellow"
+        android:background="@color/orange"
         android:textColor="@color/white"
         android:layout_marginTop="15dp"
         android:text="菜单管理" />
@@ -42,7 +42,7 @@
         android:id="@+id/table_manage"
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:background="@color/yellow"
+        android:background="@color/orange"
         android:textColor="@color/white"
         android:layout_marginTop="15dp"
         android:text="餐桌状态管理" />
@@ -51,7 +51,7 @@
         android:id="@+id/bill_manage"
         android:layout_width="match_parent"
         android:layout_height="75dp"
-        android:background="@color/yellow"
+        android:background="@color/orange"
         android:layout_marginTop="15dp"
         android:text="账目管理"
         android:textColor="@color/white" />

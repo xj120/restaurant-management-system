@@ -11,7 +11,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:background="@color/yellow"
+            android:background="@color/orange"
             android:layout_height="50dp">
 
             <TextView
@@ -70,7 +70,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="20dp"
             android:layout_gravity="center_horizontal"
-            android:background="@color/yellow"
+            android:background="@color/orange"
             android:textColor="@color/white"
             android:text="登录"/>
 

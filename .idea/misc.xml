@@ -14,12 +14,15 @@
         <entry key="..\:/AndroidStudioProjects/RestaurantManagementSystem/app/src/main/res/layout/initialization_layout.xml" value="0.25364583333333335" />
         <entry key="..\:/AndroidStudioProjects/RestaurantManagementSystem/app/src/main/res/layout/manager_login_layout.xml" value="0.25364583333333335" />
         <entry key="..\:/AndroidStudioProjects/RestaurantManagementSystem/app/src/main/res/layout/manager_main_layout.xml" value="0.25364583333333335" />
+        <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/customer_goods_layout.xml" value="0.264" />
         <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/customer_login_layout.xml" value="0.2" />
-        <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/customer_main_layout.xml" value="0.152" />
+        <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/customer_main_layout.xml" value="0.264" />
+        <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/customer_menu_layout.xml" value="0.264" />
         <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/customer_register_layout.xml" value="0.19610507246376813" />
         <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/initialization_layout.xml" value="0.19610507246376813" />
-        <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/manager_login_layout.xml" value="0.19610507246376813" />
+        <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/manager_login_layout.xml" value="0.152" />
         <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/manager_main_layout.xml" value="0.19610507246376813" />
+        <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/menu_title_view.xml" value="0.21195652173913043" />
         <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/table_item.xml" value="0.15081521739130435" />
         <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/table_state_manage.xml" value="0.176" />
       </map>
