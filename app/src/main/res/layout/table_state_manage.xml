@@ -4,11 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.TableStateManage">
+    tools:context=".Activity.TableStateManage"
+    android:background="@drawable/ic_launcher_foreground">
+
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background=""
         android:paddingLeft="16dp"
         android:paddingTop="16dp"
         android:paddingRight="16dp"
@@ -20,6 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:text="查看餐桌状态"
+            android:textColor="@color/black"
             android:textSize="25sp" />
 
         <LinearLayout
@@ -40,6 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:text="餐桌号" />
 
             <TextView
@@ -48,6 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:text="餐桌状态" />
 
             <TextView
@@ -56,6 +60,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:text="管理" />
 
         </LinearLayout>
