@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import com.example.restaurantmanagementsystem.R;
 
-public class EmployeeInformationManagement extends AppCompatActivity {
+public class EmployeeManageActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
