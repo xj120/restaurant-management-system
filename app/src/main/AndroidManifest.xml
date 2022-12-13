@@ -29,6 +29,12 @@
             android:name="com.example.restaurantmanagementsystem.Activity.CustomerRegisterActivity"
             android:exported="false" />
         <activity
+            android:name="com.example.restaurantmanagementsystem.Activity.TableStateManageActivity"
+            android:exported="true" />
+        <activity
+            android:name="com.example.restaurantmanagementsystem.Activity.EmployeeManageActivity"
+            android:exported="true" />
+        <activity
             android:name=".Activity.MainActivity"
             android:exported="true">
             <intent-filter>
