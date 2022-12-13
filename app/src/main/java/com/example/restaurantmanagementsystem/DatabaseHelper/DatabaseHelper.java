@@ -9,6 +9,13 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.restaurantmanagementsystem.Table.Table;
+import com.example.restaurantmanagementsystem.Table.TableType;
+import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String db_name = "restaurant.db";
@@ -164,6 +171,37 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             Log.e(TAG, "managerLogin: login failed!", e);
             System.out.println(e);
             return false;
+        }
+    }
+
+    public List<Table> getTableList(){
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            List<Table> tableList = new ArrayList<>();
+            Cursor cursor = db.query("Diningtable",null,null,null,
+                    null,null,null);
+            if(cursor.moveToFirst()) {
+                do{
+                    int table_id = cursor.getInt(cursor.getColumnIndexOrThrow("table_id"));
+                    String state = cursor.getString(cursor.getColumnIndexOrThrow("state"));
+                    TableType type = null;
+                    if(state.equals("AVAILABLE")){
+                        type = TableType.AVAILABLE;
+                    }else if(state.equals("DINING")){
+                        type = TableType.DINING;
+                    }else if(state.equals("CLEANING")){
+                        type = TableType.CLEANING;
+                    }
+                    Table table = new Table(table_id, type);
+                    tableList.add(table);
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+            return tableList;
+        }catch (Exception e){
+            Log.e(TAG, "getTableList: query failed!", e);
+            System.out.println(e);
+            return null;
         }
     }
 
