@@ -42,6 +42,7 @@
         android:fitsSystemWindows="true"
         android:layout_alignParentBottom="true"
         >
-        <include layout="@layout/pay_bill_bar"/>
+
+        <include layout="@layout/pay_bill_bar" />
     </RelativeLayout>
 </RelativeLayout>
