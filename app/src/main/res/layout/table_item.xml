@@ -9,10 +9,12 @@
         android:id="@+id/ll_table_item_content"
         android:layout_width="395dp"
         android:layout_height="125dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="5dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
         android:layout_marginRight="16dp"
+        android:layout_marginBottom="5dp"
         android:orientation="horizontal">
 
         <TextView
@@ -31,12 +33,13 @@
 
         <Button
             android:id="@+id/btn_manage"
-            android:layout_width="wrap_content"
-            android:layout_height="37dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="36dp"
             android:layout_marginBottom="100dp"
-            android:background="@color/orange"
-            android:textColor="@color/white"
-            android:text="修改" />
+            android:background="@drawable/orange_button"
+            android:text="修改"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 

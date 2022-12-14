@@ -27,6 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_employee_welcome"
             android:layout_marginTop="15dp" />
+
         <Button
             android:id="@+id/btn_return"
             android:layout_width="wrap_content"
@@ -34,6 +35,8 @@
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"
             android:layout_marginBottom="100dp"
+            android:background="@drawable/orange_button"
+            android:textColor="@color/white"
             android:text="新增" />
 
 

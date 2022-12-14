@@ -5,6 +5,22 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:background="@color/orange"
+        android:layout_height="50dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:textSize="20dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/white"
+            android:text="餐饮管理系统" />
+
+    </RelativeLayout>
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
@@ -15,43 +31,47 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="69dp"
-        android:text="餐饮管理系统首页"
+        android:text="餐饮管理端"
         android:textColor="@color/black"
         android:textSize="26sp"
         android:gravity="center" />
 
     <Button
         android:id="@+id/employee_manage"
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:background="@color/orange"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/orange_button"
         android:textColor="@color/white"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
         android:text="员工管理" />
 
     <Button
         android:id="@+id/menu_manage"
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:background="@color/orange"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/orange_button"
         android:textColor="@color/white"
         android:layout_marginTop="15dp"
         android:text="菜单管理" />
 
     <Button
         android:id="@+id/table_manage"
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:background="@color/orange"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/orange_button"
         android:textColor="@color/white"
         android:layout_marginTop="15dp"
         android:text="餐桌状态管理" />
 
     <Button
         android:id="@+id/bill_manage"
-        android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:background="@color/orange"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/orange_button"
         android:layout_marginTop="15dp"
         android:text="账目管理"
         android:textColor="@color/white" />
