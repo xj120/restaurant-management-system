@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.restaurantmanagementsystem.Table.Table;
 import com.example.restaurantmanagementsystem.Table.TableType;
+import com.example.restaurantmanagementsystem.User.Employee;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -109,7 +110,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }catch (Exception e)
         {
             Log.e(TAG, "insertCustomer: insert failed!", e);
-            System.out.println(e);
             return false;
         }
     }
@@ -129,7 +129,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }catch (Exception e){
             Log.e(TAG, "checkCustomerPhone: query failed!", e);
-            System.out.println(e);
             return false;
         }
     }
@@ -149,7 +148,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }catch (Exception e){
             Log.e(TAG, "customerLogin: login failed!", e);
-            System.out.println(e);
             return false;
         }
     }
@@ -169,12 +167,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             }
         }catch (Exception e){
             Log.e(TAG, "managerLogin: login failed!", e);
-            System.out.println(e);
             return false;
         }
     }
 
-    public List<Table> getTableList(){
+    public List<Table> getTableList() {
         try{
             SQLiteDatabase db = this.getWritableDatabase();
             List<Table> tableList = new ArrayList<>();
@@ -200,10 +197,58 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return tableList;
         }catch (Exception e){
             Log.e(TAG, "getTableList: query failed!", e);
-            System.out.println(e);
             return null;
         }
     }
 
 
+    public List<Employee> getEmployeeList() {
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            List<Employee> employeeList = new ArrayList<>();
+            Cursor cursor = db.query("Employee", null, null, null,
+                    null, null, null);
+            if(cursor.moveToFirst()) {
+                do {
+                    int employeeId = cursor.getInt(cursor.getColumnIndexOrThrow("emp_id"));
+                    String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+                    String phone = cursor.getString(cursor.getColumnIndexOrThrow("phone"));
+                    Employee emp = new Employee(employeeId, phone, name);
+                    employeeList.add(emp);
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+            return employeeList;
+        }catch (Exception e){
+            Log.e(TAG, "getEmployeeList: query failded!", e);
+            return null;
+        }
+    }
+
+
+    public boolean updateTableState (String state, int tableId) {
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put("state", state);
+            db.update("Diningtable", values, "table_id = ?",
+                    new String[] {String.valueOf(tableId)});
+            return true;
+        }catch (Exception e){
+            Log.e(TAG, "updateTableState: update failed!", e);
+            return false;
+        }
+    }
+
+
+    public boolean deleteEmployee (int empId) {
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            db.delete("Employee", "emp_id = ?", new String[] {String.valueOf(empId)});
+            return true;
+        }catch (Exception e) {
+            Log.e(TAG, "deleteEmployee: delete failed!", e);
+            return false;
+        }
+    }
 }

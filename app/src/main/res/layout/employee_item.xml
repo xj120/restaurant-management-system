@@ -92,24 +92,25 @@
                     android:layout_height="match_parent"
                     android:text="删除"
                     android:background="#AFEEEE"
+                    android:focusable="false"
                     >
 
                 </Button>
             </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent">
-                <Button
-                    android:id="@+id/employee_modify"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:text="修改"
-                    android:background="#4169E1"
-                    >
+<!--            <LinearLayout-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_height="match_parent">-->
+<!--                <Button-->
+<!--                    android:id="@+id/employee_modify"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:text="修改"-->
+<!--                    android:background="#4169E1"-->
+<!--                    >-->
 
-                </Button>
-            </LinearLayout>
+<!--                </Button>-->
+<!--            </LinearLayout>-->
         </LinearLayout>
 
     </RelativeLayout>
