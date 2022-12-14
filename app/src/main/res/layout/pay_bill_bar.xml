@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/orange"
+        android:background="@color/grey"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
-            android:layout_weight="1"
+            android:layout_weight="3"
             android:gravity="left">
 
             <TextView
@@ -41,15 +41,15 @@
                 android:textSize="32sp" />
         </LinearLayout>
 
-        <TextView
+        <Button
             android:id="@+id/settlement"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:layout_weight="1"
-            android:background="@color/orange"
+            android:layout_weight="2"
+            android:background="@color/light_orange"
             android:gravity="center"
-            android:text="￥15 起送"
+            android:text="去结算"
             android:textColor="#ffffff"
             android:textSize="24sp" />
     </LinearLayout>
