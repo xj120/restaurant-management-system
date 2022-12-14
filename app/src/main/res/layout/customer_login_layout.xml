@@ -19,7 +19,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="20dp"
                 android:gravity="center_vertical"
-                android:text="餐饮管理系统"
+                android:text="顾客登录"
                 android:textColor="@color/white"
                 android:textSize="20dp" />
 

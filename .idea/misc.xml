@@ -20,17 +20,18 @@
         <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/customer_goods_layout.xml" value="0.1125" />
         <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/customer_list_layout.xml" value="0.2" />
         <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/customer_login_layout.xml" value="0.264" />
-        <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/customer_main_layout.xml" value="0.13677536231884058" />
+        <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/customer_main_layout.xml" value="0.2" />
         <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/customer_manage_order_layout.xml" value="0.21195652173913043" />
         <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/customer_order_layout.xml" value="0.13677536231884058" />
         <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/customer_paid_layout.xml" value="0.264" />
-        <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/customer_pay_layout.xml" value="0.13677536231884058" />
+        <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/customer_pay_layout.xml" value="0.2" />
         <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/customer_register_layout.xml" value="0.13677536231884058" />
         <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/employee_information_management.xml" value="0.25364583333333335" />
         <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/employee_item.xml" value="0.25364583333333335" />
         <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/initialization_layout.xml" value="0.13677536231884058" />
         <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/manager_login_layout.xml" value="0.13677536231884058" />
         <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/manager_main_layout.xml" value="0.13677536231884058" />
+        <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/order_item.xml" value="0.264" />
         <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/pay_bill_bar.xml" value="0.264" />
         <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/table_item.xml" value="0.13677536231884058" />
         <entry key="..\:/Restaurant/restaurant-management-system/app/src/main/res/layout/table_state_manage.xml" value="0.13677536231884058" />
