@@ -15,9 +15,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
+            android:background="@color/orange"
             android:gravity="center"
-            android:background="#6495ED"
             android:text="员工管理"
+            android:textColor="@color/white"
             android:textSize="30sp" />
 
         <ListView
@@ -26,6 +27,14 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_employee_welcome"
             android:layout_marginTop="15dp" />
+        <Button
+            android:id="@+id/btn_return"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="100dp"
+            android:text="新增" />
 
 
 
