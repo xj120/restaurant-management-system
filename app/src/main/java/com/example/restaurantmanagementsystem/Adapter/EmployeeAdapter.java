@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.restaurantmanagementsystem.R;
@@ -15,10 +16,12 @@ import java.util.List;
 public class EmployeeAdapter extends ArrayAdapter<Employee> {
 
     private int resourceId;
+    private MyClickListener myClickListener;
 
-    public EmployeeAdapter(Context context, int textViewResourceId, List<Employee> objects) {
+    public EmployeeAdapter(Context context, int textViewResourceId, List<Employee> objects, MyClickListener listener) {
         super(context, textViewResourceId, objects);
         resourceId = textViewResourceId;
+        myClickListener = listener;
     }
 
     @Override
@@ -32,6 +35,7 @@ public class EmployeeAdapter extends ArrayAdapter<Employee> {
             viewHolder.employeeId = (TextView) view.findViewById(R.id.employee_id);
             viewHolder.employeeName = (TextView) view.findViewById(R.id.employee_name);
             viewHolder.employeePhone = (TextView) view.findViewById(R.id.employee_phone);
+            viewHolder.employeeDelete = (Button) view.findViewById(R.id.employee_delete);
             view.setTag(viewHolder);
         } else {
             view = convertView;
@@ -40,6 +44,8 @@ public class EmployeeAdapter extends ArrayAdapter<Employee> {
         viewHolder.employeeId.setText(String.valueOf(employee.getUser_id()));
         viewHolder.employeeName.setText(employee.getName());
         viewHolder.employeePhone.setText(employee.getAccount());
+        viewHolder.employeeDelete.setOnClickListener(myClickListener);
+        viewHolder.employeeDelete.setTag(position);
         return view;
     }
 
@@ -47,6 +53,15 @@ public class EmployeeAdapter extends ArrayAdapter<Employee> {
         TextView employeeId;
         TextView employeeName;
         TextView employeePhone;
+        Button employeeDelete;
+    }
+
+    public static abstract class MyClickListener implements View.OnClickListener {
+        @Override
+        public void onClick(View v) {
+            myOnClick((Integer)v.getTag(), v);
+        }
+        public abstract void myOnClick(int position, View v);
     }
 
 }

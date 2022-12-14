@@ -240,4 +240,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+
+    public boolean deleteEmployee (int empId) {
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            db.delete("Employee", "emp_id = ?", new String[] {String.valueOf(empId)});
+            return true;
+        }catch (Exception e) {
+            Log.e(TAG, "deleteEmployee: delete failed!", e);
+            return false;
+        }
+    }
 }

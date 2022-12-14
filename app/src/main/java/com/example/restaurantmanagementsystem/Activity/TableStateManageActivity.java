@@ -51,7 +51,7 @@ public class TableStateManageActivity extends AppCompatActivity {
                     .setItems(stateList, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
-                            if (dbHelper.updateTableState(stateList[i], i+1)) {
+                            if (dbHelper.updateTableState(stateList[i], position + 1)) {
                                 Toast.makeText(TableStateManageActivity.this, "Update success",
                                         Toast.LENGTH_SHORT).show();
                                 tableList.get(position).setType(TableType.valueOf(stateList[i]));
