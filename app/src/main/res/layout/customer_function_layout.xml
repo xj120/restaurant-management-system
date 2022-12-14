@@ -15,7 +15,7 @@
             android:id="@+id/div1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <include layout="@layout/titlebar"/>
+            <include layout="@layout/title_bar"/>
         </LinearLayout>
 
         <LinearLayout
