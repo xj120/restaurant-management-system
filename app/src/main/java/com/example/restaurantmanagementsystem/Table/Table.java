@@ -5,6 +5,11 @@ public class Table {
     private int user_id;
     private TableType type;
 
+    public Table(int table_id, TableType type) {
+        this.table_id = table_id;
+        this.type = type;
+    }
+
     public Table(int table_id, int user_id, TableType type) {
         this.table_id = table_id;
         this.user_id = user_id;
