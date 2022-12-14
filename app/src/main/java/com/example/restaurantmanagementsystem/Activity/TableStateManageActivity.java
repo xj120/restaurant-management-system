@@ -1,20 +1,31 @@
 package com.example.restaurantmanagementsystem.Activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.example.restaurantmanagementsystem.Adapter.TableAdapter;
 import com.example.restaurantmanagementsystem.DatabaseHelper.DatabaseHelper;
 import com.example.restaurantmanagementsystem.R;
 import com.example.restaurantmanagementsystem.Table.Table;
+import com.example.restaurantmanagementsystem.Table.TableType;
 
 import java.util.List;
 
 public class TableStateManageActivity extends AppCompatActivity {
 
     private DatabaseHelper dbHelper;
+    private TableAdapter adapter;
+    private List<Table> tableList;
+    private ListView listView;
+    final String[] stateList = new String[]{"AVAILABLE", "DINING", "CLEANING"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,15 +34,47 @@ public class TableStateManageActivity extends AppCompatActivity {
 
         dbHelper = new DatabaseHelper(this, "Restaurant.db", null, 2);
 
-        List<Table> tableList = dbHelper.getTableList();
+        tableList = dbHelper.getTableList();
 
-        TableAdapter adapter = new TableAdapter(TableStateManageActivity.this,
-                R.layout.table_item, tableList);
-        ListView listView = (ListView) findViewById(R.id.lv_table);
+        adapter = new TableAdapter(TableStateManageActivity.this,
+                R.layout.table_item, tableList, mListener);
+        listView = (ListView) findViewById(R.id.lv_table);
         listView.setAdapter(adapter);
 
-//        if(tableList != null) {
-//
-//        }
     }
+
+    private TableAdapter.MyClickListener mListener = new TableAdapter.MyClickListener() {
+        @Override
+        public void myOnClick(int position, View v) {
+            AlertDialog alertDialog = new AlertDialog.Builder(TableStateManageActivity.this)
+                    .setTitle("改变餐桌" + (position + 1) + "状态")
+                    .setItems(stateList, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            if (dbHelper.updateTableState(stateList[i], i+1)) {
+                                Toast.makeText(TableStateManageActivity.this, "Update success",
+                                        Toast.LENGTH_SHORT).show();
+                                tableList.get(position).setType(TableType.valueOf(stateList[i]));
+                                notifyDataSetChanged(position, listView);
+                            }
+                            else {
+                                Toast.makeText(TableStateManageActivity.this, "Update fail",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    })
+                    .create();
+            alertDialog.show();
+        }
+    };
+
+    private void notifyDataSetChanged(int position, ListView listView) {
+        int firstVisiblePosition = listView.getFirstVisiblePosition();
+        int lastVisiblePosition = listView.getLastVisiblePosition();
+        if(position >= firstVisiblePosition && position <= lastVisiblePosition) {
+            View view = listView.getChildAt(position - firstVisiblePosition);
+            adapter.getView(position, view, listView);
+        }
+    }
+
 }
