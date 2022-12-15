@@ -14,25 +14,37 @@
         android:theme="@style/Theme.RestaurantManagementSystem"
         tools:targetApi="31">
         <activity
-            android:name="com.example.restaurantmanagementsystem.Activity.ManagerMainActivity"
+            android:name=".Activity.CustomerListActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.restaurantmanagementsystem.Activity.CustomerMainActivity"
+            android:name=".Activity.CustomerPaidActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.restaurantmanagementsystem.Activity.ManagerLoginActivity"
+            android:name=".Activity.CustomerOrderActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.restaurantmanagementsystem.Activity.CustomerLoginActivity"
+            android:name=".Activity.CustomerMenuActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.restaurantmanagementsystem.Activity.CustomerRegisterActivity"
+            android:name=".Activity.ManagerMainActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.restaurantmanagementsystem.Activity.TableStateManageActivity"
+            android:name=".Activity.CustomerMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.ManagerLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.CustomerLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.CustomerRegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Activity.TableStateManageActivity"
             android:exported="true" />
         <activity
-            android:name="com.example.restaurantmanagementsystem.Activity.EmployeeManageActivity"
+            android:name=".Activity.EmployeeManageActivity"
             android:exported="true" />
         <activity
             android:name=".Activity.MainActivity"
