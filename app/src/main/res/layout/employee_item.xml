@@ -84,14 +84,19 @@
             </LinearLayout>
             <LinearLayout
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="match_parent">
+                android:layout_weight="3"
+                android:layout_height="100dp"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="10dp">
                 <Button
                     android:id="@+id/employee_delete"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:text="删除"
-                    android:background="#AFEEEE"
+                    android:background="@drawable/orange_button"
+                    android:textColor="@color/white"
                     android:focusable="false"
                     >
 

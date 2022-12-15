@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.EmployeeManageActivity">
+    tools:context=".Activity.MenuInformation">
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -12,13 +12,13 @@
         android:background="#DCDCDC">
 
         <TextView
-            android:id="@+id/tv_employee_welcome"
+            android:id="@+id/tv_menu_welcome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:background="@color/orange"
             android:gravity="center"
-            android:text="员工管理"
+            android:text="菜单管理"
             android:textColor="@color/white"
             android:textSize="30sp" />
 
@@ -26,11 +26,11 @@
             android:id="@+id/lv_employee"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_employee_welcome"
+            android:layout_below="@id/tv_menu_welcome"
             android:layout_marginTop="15dp" />
 
         <Button
-            android:id="@+id/employee_add"
+            android:id="@+id/menu_add"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -43,4 +43,5 @@
 
 
     </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

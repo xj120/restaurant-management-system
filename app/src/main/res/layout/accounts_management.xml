@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activity.EmployeeManageActivity">
+    tools:context=".Activity.AccountsManagement">
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -12,35 +12,22 @@
         android:background="#DCDCDC">
 
         <TextView
-            android:id="@+id/tv_employee_welcome"
+            android:id="@+id/tv_accounts_welcome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:background="@color/orange"
             android:gravity="center"
-            android:text="员工管理"
+            android:text="账目查看"
             android:textColor="@color/white"
             android:textSize="30sp" />
 
         <ListView
-            android:id="@+id/lv_employee"
+            android:id="@+id/lv_accounts"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tv_employee_welcome"
+            android:layout_below="@id/tv_accounts_welcome"
             android:layout_marginTop="15dp" />
-
-        <Button
-            android:id="@+id/employee_add"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="100dp"
-            android:background="@drawable/orange_button"
-            android:textColor="@color/white"
-            android:text="新增" />
-
-
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
