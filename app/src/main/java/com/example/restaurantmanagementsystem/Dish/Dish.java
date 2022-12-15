@@ -2,15 +2,20 @@ package com.example.restaurantmanagementsystem.Dish;
 
 public class Dish {
     private String dish_name;
-    private int price;
+    private double price;
+    private int quantity;
 
-    public Dish(String dish_name, int price, int quantity) {
+    public Dish(String dish_name, double price, int quantity) {
         this.dish_name = dish_name;
         this.price = price;
         this.quantity = quantity;
     }
 
-    private int quantity;
+    public Dish(String dish_name, double price) {
+        this.dish_name = dish_name;
+        this.price = price;
+    }
+
 
     public String getDish_name() {
         return dish_name;

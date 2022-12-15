@@ -4,7 +4,7 @@ public class Bill {
     private int bill_id;
     private int customer_id;
 
-    public Bill(int bill_id, int customer_id, int price) {
+    public Bill(int bill_id, int customer_id, double price) {
         this.bill_id = bill_id;
         this.customer_id = customer_id;
         this.price = price;
@@ -26,7 +26,7 @@ public class Bill {
         this.customer_id = customer_id;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -34,5 +34,5 @@ public class Bill {
         this.price = price;
     }
 
-    private int price;
+    private double price;
 }

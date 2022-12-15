@@ -23,6 +23,8 @@ public class ManagerMainActivity extends AppCompatActivity implements View.OnCli
 
         employeeButton.setOnClickListener(this);
         tableButton.setOnClickListener(this);
+        menuButton.setOnClickListener(this);
+        billButton.setOnClickListener(this);
     }
 
     @Override
@@ -35,6 +37,14 @@ public class ManagerMainActivity extends AppCompatActivity implements View.OnCli
             case R.id.table_manage:
                 Intent tIntent = new Intent(ManagerMainActivity.this, TableStateManageActivity.class);
                 startActivity(tIntent);
+                break;
+            case R.id.bill_manage:
+                Intent bIntent = new Intent(ManagerMainActivity.this, AccountsManageActivity.class);
+                startActivity(bIntent);
+                break;
+            case R.id.menu_manage:
+                Intent mIntent = new Intent(ManagerMainActivity.this, MenuManageActivity.class);
+                startActivity(mIntent);
                 break;
             default:
                 break;

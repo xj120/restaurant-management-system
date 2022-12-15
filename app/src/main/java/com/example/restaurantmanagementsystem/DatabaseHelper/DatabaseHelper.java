@@ -9,6 +9,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.restaurantmanagementsystem.Bill.Bill;
+import com.example.restaurantmanagementsystem.Dish.Dish;
 import com.example.restaurantmanagementsystem.Table.Table;
 import com.example.restaurantmanagementsystem.Table.TableType;
 import com.example.restaurantmanagementsystem.User.Employee;
@@ -263,6 +265,96 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return true;
         }catch (Exception e) {
             Log.e(TAG, "addEmployee: add failed!", e);
+            return false;
+        }
+    }
+
+
+    public List<Bill> getBillList () {
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            List<Bill> billList = new ArrayList<>();
+            Cursor cursor = db.query("Bill", null, null, null,
+                    null, null, null);
+            if(cursor.moveToFirst()) {
+                do {
+                    int billId = cursor.getInt(cursor.getColumnIndexOrThrow("bill_id"));
+                    int customerId = cursor.getInt(cursor.getColumnIndexOrThrow("customer_id"));
+                    double price = cursor.getDouble(cursor.getColumnIndexOrThrow("price"));
+                    Bill bill = new Bill(billId, customerId, price);
+                    billList.add(bill);
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+            return billList;
+        }catch (Exception e){
+            Log.e(TAG, "getBillList: query failed!", e);
+            return null;
+        }
+    }
+
+
+    public List<Dish> getDishList () {
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            List<Dish> dishList = new ArrayList<>();
+            Cursor cursor = db.query("Menu", null, null, null,
+                    null, null, null);
+            if(cursor.moveToFirst()) {
+                do {
+                    String dishName = cursor.getString(cursor.getColumnIndexOrThrow("dish_name"));
+                    double price = cursor.getInt(cursor.getColumnIndexOrThrow("price"));
+                    Dish dish = new Dish(dishName, price);
+                    dishList.add(dish);
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+            return dishList;
+        }catch (Exception e){
+            Log.e(TAG, "getDishList: query failed!", e);
+            return null;
+        }
+    }
+
+
+    public boolean deleteDish (String dishName) {
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            db.delete("Menu", "dish_name = ?", new String[] {dishName});
+            return true;
+        }catch (Exception e) {
+            Log.e(TAG, "deleteDish: delete failed!", e);
+            return false;
+        }
+    }
+
+
+    public boolean updateDish (String dishName, String mdishName, double mprice) {
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put("dish_name", mdishName);
+            values.put("price", mprice);
+            db.update("Diningtable", values, "dish_name = ?",
+                    new String[] {dishName});
+            return true;
+        }catch (Exception e){
+            Log.e(TAG, "updateDish: update failed!", e);
+            return false;
+        }
+    }
+
+
+    public boolean addDish (String dishName, String price) {
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put("dish_name", dishName);
+            values.put("price", price);
+            db.insert("Menu", null, values);
+            return true;
+        }catch (Exception e) {
+            Log.e(TAG, "addDish: add failed!", e);
             return false;
         }
     }
