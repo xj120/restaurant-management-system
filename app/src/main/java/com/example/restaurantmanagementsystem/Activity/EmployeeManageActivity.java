@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,6 +24,7 @@ public class EmployeeManageActivity extends AppCompatActivity {
     private List<Employee> employeeList;
     private EmployeeAdapter adapter;
     private ListView listView;
+    private Button employeeAdd;
 
 
     @Override
@@ -38,6 +41,34 @@ public class EmployeeManageActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.lv_employee);
         listView.setAdapter(adapter);
+
+        employeeAdd = (Button) findViewById(R.id.employee_add);
+        employeeAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                View addView = View.inflate(EmployeeManageActivity.this, R.layout.add_employee_layout, null);
+                AlertDialog alertDialog = new AlertDialog.Builder(EmployeeManageActivity.this)
+                        .setTitle("新增员工")
+                        .setView(addView)
+                        .create();
+                alertDialog.show();
+                EditText name = addView.findViewById(R.id.add_employee_name);
+                EditText phone = addView.findViewById(R.id.add_employee_mobile);
+                Button confirm = addView.findViewById(R.id.btn_save_pop);
+                confirm.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        if (dbHelper.addEmployee(name.getText().toString(), phone.getText().toString())) {
+                            Toast.makeText(EmployeeManageActivity.this, "添加成功！", Toast.LENGTH_SHORT).show();
+                            adapter.notifyDataSetChanged();
+                        }
+                        else {
+                            Toast.makeText(EmployeeManageActivity.this, "添加失败！", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
     }
 
     private EmployeeAdapter.MyClickListener mListener = new EmployeeAdapter.MyClickListener() {

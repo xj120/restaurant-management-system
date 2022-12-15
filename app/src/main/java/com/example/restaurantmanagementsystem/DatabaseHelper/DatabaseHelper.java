@@ -251,4 +251,19 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+
+
+    public boolean addEmployee (String name, String phone) {
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put("name", name);
+            values.put("phone", phone);
+            db.insert("Employee", null, values);
+            return true;
+        }catch (Exception e) {
+            Log.e(TAG, "addEmployee: add failed!", e);
+            return false;
+        }
+    }
 }
