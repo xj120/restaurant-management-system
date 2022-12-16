@@ -36,6 +36,9 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
 
         Button orderNow = (Button) findViewById(R.id.eat_now_mode1);
         Button checkHistory = (Button) findViewById(R.id.eat_now_mode2);
+
+        orderNow.setOnClickListener(this);
+        checkHistory.setOnClickListener(this);
     }
 
     @Override
@@ -73,6 +76,7 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
             case R.id.eat_now_mode2:
                 Intent hIntent = new Intent(CustomerMainActivity.this, CustomerOrderActivity.class);
                 hIntent.putExtra("customer_id", customerId);
+                startActivity(hIntent);
                 break;
             default:
                 break;
