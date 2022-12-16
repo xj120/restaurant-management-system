@@ -90,15 +90,15 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:padding="10dp">
+
                 <Button
                     android:id="@+id/employee_delete"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="删除"
+                    android:layout_height="30dp"
                     android:background="@drawable/orange_button"
-                    android:textColor="@color/white"
                     android:focusable="false"
-                    >
+                    android:text="删除"
+                    android:textColor="@color/white">
 
                 </Button>
             </LinearLayout>

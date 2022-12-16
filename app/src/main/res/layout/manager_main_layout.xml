@@ -64,7 +64,7 @@
         android:background="@drawable/orange_button"
         android:textColor="@color/white"
         android:layout_marginTop="15dp"
-        android:text="餐桌状态管理" />
+        android:text="餐桌管理" />
 
     <Button
         android:id="@+id/bill_manage"
