@@ -52,9 +52,13 @@ public class TableStateManageActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             if (dbHelper.updateTableState(stateList[i], position + 1)) {
+                                if (stateList[i].equals("CLEANING")) {
+                                    dbHelper.removeCustomerToTable(position + 1);
+                                }
                                 Toast.makeText(TableStateManageActivity.this, "Update success",
                                         Toast.LENGTH_SHORT).show();
                                 tableList.get(position).setType(TableType.valueOf(stateList[i]));
+//                                adapter.notifyDataSetChanged();
                                 notifyDataSetChanged(position, listView);
                             }
                             else {

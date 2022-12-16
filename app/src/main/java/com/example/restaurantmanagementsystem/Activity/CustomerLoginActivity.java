@@ -44,7 +44,9 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
                 String cusPasswordStr = customerPassword.getText().toString();
                 if(dbHelper.customerLogin(cusAccountStr, cusPasswordStr)){
                     Toast.makeText(CustomerLoginActivity.this, "登录成功！", Toast.LENGTH_SHORT).show();
+                    int customerId = dbHelper.getCustomerIdByPhone(cusAccountStr);
                     Intent lIntent = new Intent(CustomerLoginActivity.this, CustomerMainActivity.class);
+                    lIntent.putExtra("customer_id", customerId);
                     startActivity(lIntent);
                 }
                 else{

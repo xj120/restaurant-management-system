@@ -96,6 +96,7 @@ public class MenuManageActivity extends AppCompatActivity {
                         Toast.makeText(MenuManageActivity.this, "更新成功！", Toast.LENGTH_SHORT).show();
                         dishList.get(position).setDish_name(dishName.getText().toString());
                         dishList.get(position).setPrice(Double.parseDouble(price.getText().toString()));
+//                        adapter.notifyDataSetChanged();
                         notifyDataSetChanged(position, listView);
                     }
                     else {

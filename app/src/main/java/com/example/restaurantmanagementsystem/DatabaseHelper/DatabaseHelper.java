@@ -436,4 +436,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             return false;
         }
     }
+
+
+    public boolean checkCustomerInTable (int customerId) {
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            Cursor cursor = db.query("Diningtable",null, "customer_id=?",
+                    new String[]{String.valueOf(customerId)}, null, null, null);
+            if(cursor.moveToFirst()){
+                cursor.close();
+                return true;
+            }
+            else{
+                cursor.close();
+                return false;
+            }
+        }catch (Exception e){
+            Log.e(TAG, "checkCustomerInTable: check failed!", e);
+            return false;
+        }
+    }
+
+
+    public int getCustomerIdByPhone (String phone) {
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            int customerId = 0;
+            Cursor cursor = db.query("Customer", null, "phone=?",
+                    new String[]{phone}, null, null, null);
+            if(cursor.moveToFirst()) {
+                customerId = cursor.getInt(cursor.getColumnIndexOrThrow("customer_id"));
+            }
+            cursor.close();
+            return customerId;
+        }catch (Exception e){
+            Log.e(TAG, "getCustomerIdByPhone: query failed!", e);
+            return 0;
+        }
+    }
 }

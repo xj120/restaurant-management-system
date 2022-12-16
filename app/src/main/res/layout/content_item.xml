@@ -30,7 +30,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/medicineName"
+                    android:id="@+id/each_dish_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="巨无霸"
@@ -60,7 +60,7 @@
                         android:text="￥"
                         android:textColor="@color/black"/>
                     <TextView
-                        android:id="@+id/medicinePrice"
+                        android:id="@+id/each_dish_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="3.00"
