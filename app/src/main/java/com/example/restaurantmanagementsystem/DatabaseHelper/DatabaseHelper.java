@@ -72,7 +72,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             "  \"customer_id\" integer,\n" +
             "  \"quantity\" integer,\n" +
             "  \"price\" real,\n" +
-            "  \"state\" TEXT,\n" +
             "  PRIMARY KEY (\"order_id\", \"dish_name\"),\n" +
             "  CONSTRAINT \"dish_name\" FOREIGN KEY (\"dish_name\") REFERENCES \"Menu\" (\"dish_name\") ON DELETE NO ACTION ON UPDATE NO ACTION,\n" +
             "  CONSTRAINT \"customer_id\" FOREIGN KEY (\"customer_id\") REFERENCES \"Customer\" (\"customer_id\") ON DELETE NO ACTION ON UPDATE NO ACTION\n" +

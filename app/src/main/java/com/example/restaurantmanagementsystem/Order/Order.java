@@ -8,13 +8,11 @@ public class Order {
     private int orderId;
     private List<Dish> dish;
 
-    public Order(int orderId, List<Dish> dish, OrderState state) {
+    public Order(int orderId, List<Dish> dish) {
         this.orderId = orderId;
         this.dish = dish;
-        this.state = state;
     }
 
-    private OrderState state;
 
     public int getOrderId() {
         return orderId;
@@ -32,11 +30,4 @@ public class Order {
         this.dish = dish;
     }
 
-    public OrderState getState() {
-        return state;
-    }
-
-    public void setState(OrderState state) {
-        this.state = state;
-    }
 }
