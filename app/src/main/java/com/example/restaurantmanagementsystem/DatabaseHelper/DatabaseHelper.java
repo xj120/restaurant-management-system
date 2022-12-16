@@ -360,4 +360,81 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    public boolean setCustomerToTable (int tableId, int customerId) {
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put("customer_id", customerId);
+            db.update("Diningtable", values, "table_id = ?",
+                    new String[] {String.valueOf(tableId)});
+            return true;
+        }catch (Exception e){
+            Log.e(TAG, "setCustomerToTable: update failed!", e);
+            return false;
+        }
+    }
+
+
+    public boolean removeCustomerToTable (int tableId) {
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            String sql = "UPDATE Diningtable SET customer_id = NULL WHERE table_id = " + tableId + ";";
+            db.execSQL(sql);
+            return true;
+        }catch (Exception e){
+            Log.e(TAG, "removeCustomerToTable: update failed!", e);
+            return false;
+        }
+    }
+
+
+    public boolean addBill (int customerId, double price) {
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put("customer_id", customerId);
+            values.put("price", price);
+            db.insert("Bill", null, values);
+            return true;
+        }catch (Exception e) {
+            Log.e(TAG, "addBill: add failed!", e);
+            return false;
+        }
+    }
+
+
+    public int getMaxOrderId () {
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            int maxId = 0;
+            Cursor cursor = db.query("Order", null, null, null,
+                    null, null, null);
+            if(cursor.moveToLast()) {
+                maxId = cursor.getInt(cursor.getColumnIndexOrThrow("order_id"));
+            }
+            cursor.close();
+            return maxId;
+        }catch (Exception e){
+            Log.e(TAG, "getMaxOrderId: query failed!", e);
+            return 0;
+        }
+    }
+
+
+    public boolean addOrder (int orderId, int customerId, Dish dish) {
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues values = new ContentValues();
+            values.put("order_id", orderId);
+            values.put("customer_id", customerId);
+            values.put("dish_name", dish.getDish_name());
+            values.put("quantity", dish.getQuantity());
+            values.put("price", dish.getPrice());
+            db.insert("Order", null, values);
+            return true;
+        }catch (Exception e) {
+            Log.e(TAG, "addOrder: add failed!", e);
+            return false;
+        }
+    }
 }
