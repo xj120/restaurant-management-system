@@ -54,7 +54,7 @@ public class EmployeeManageActivity extends AppCompatActivity {
                 alertDialog.show();
                 EditText name = addView.findViewById(R.id.add_employee_name);
                 EditText phone = addView.findViewById(R.id.add_employee_mobile);
-                Button confirm = addView.findViewById(R.id.btn_save_pop);
+                Button confirm = addView.findViewById(R.id.addemp_save_pop);
                 confirm.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

@@ -335,7 +335,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             ContentValues values = new ContentValues();
             values.put("dish_name", mdishName);
             values.put("price", mprice);
-            db.update("Diningtable", values, "dish_name = ?",
+            db.update("Menu", values, "dish_name = ?",
                     new String[] {dishName});
             return true;
         }catch (Exception e){

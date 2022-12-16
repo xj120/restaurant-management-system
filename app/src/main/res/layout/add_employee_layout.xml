@@ -28,7 +28,7 @@
 
 
     <Button
-        android:id="@+id/btn_save_pop"
+        android:id="@+id/addemp_save_pop"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"

@@ -10,7 +10,7 @@
     android:paddingTop="30dp">
 
     <EditText
-        android:id="@+id/add_dish_name"
+        android:id="@+id/modify_dish_name"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:hint="菜名"
@@ -18,7 +18,7 @@
         android:textSize="18sp" />
 
     <EditText
-        android:id="@+id/add_dish_price"
+        android:id="@+id/modify_dish_price"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -27,7 +27,7 @@
         android:textSize="18sp" />
 
     <Button
-        android:id="@+id/btn_save_pop"
+        android:id="@+id/moddish_save_pop"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
