@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.restaurantmanagementsystem.Bill.Bill;
 import com.example.restaurantmanagementsystem.Dish.Dish;
+import com.example.restaurantmanagementsystem.Order.Order;
 import com.example.restaurantmanagementsystem.Table.Table;
 import com.example.restaurantmanagementsystem.Table.TableType;
 import com.example.restaurantmanagementsystem.User.Employee;
@@ -434,6 +435,32 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }catch (Exception e) {
             Log.e(TAG, "addOrder: add failed!", e);
             return false;
+        }
+    }
+
+
+    private List<Order> getOrderByCustomer (int customerId) {
+        try{
+            SQLiteDatabase db = this.getWritableDatabase();
+            List<Order> historyOrder = new ArrayList<>();
+            Cursor cursor = db.query("'Order'", null, "customer_id=?",
+                    new String[]{String.valueOf(customerId)}, null, null, null);
+            if(cursor.moveToFirst()) {
+                do {
+                    int orderId = cursor.getInt(cursor.getColumnIndexOrThrow("order_id"));
+                    String dishName = cursor.getString(cursor.getColumnIndexOrThrow("dish_name"));
+                    int quantity = cursor.getInt(cursor.getColumnIndexOrThrow("quantity"));
+                    double price = cursor.getInt(cursor.getColumnIndexOrThrow("price"));
+                    Dish dish = new Dish(dishName, price, quantity);
+                    Order order = new Order(orderId, dish);
+                    historyOrder.add(order);
+                } while (cursor.moveToNext());
+            }
+            cursor.close();
+            return historyOrder;
+        }catch (Exception e){
+            Log.e(TAG, "getOrderByCustomer: query failed!", e);
+            return null;
         }
     }
 

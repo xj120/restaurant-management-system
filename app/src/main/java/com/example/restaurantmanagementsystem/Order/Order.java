@@ -6,9 +6,9 @@ import java.util.List;
 
 public class Order {
     private int orderId;
-    private List<Dish> dish;
+    private Dish dish;
 
-    public Order(int orderId, List<Dish> dish) {
+    public Order(int orderId, Dish dish) {
         this.orderId = orderId;
         this.dish = dish;
     }
@@ -22,11 +22,11 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public List<Dish> getDish() {
+    public Dish getDish() {
         return dish;
     }
 
-    public void setDish(List<Dish> dish) {
+    public void setDish(Dish dish) {
         this.dish = dish;
     }
 

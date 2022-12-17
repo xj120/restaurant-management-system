@@ -38,18 +38,18 @@
                     android:layout_marginLeft="5dp"
                     android:ellipsize="end"
                     android:singleLine="true"
-                    android:text="状态："
+                    android:text="订单编号："
                     android:textColor="@color/grey"
                     android:textSize="15sp" />
 
                 <TextView
-                    android:id="@+id/orderState"
+                    android:id="@+id/order_id"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="left"
                     android:ellipsize="end"
                     android:singleLine="true"
-                    android:text="已完成"
+                    android:text="1"
                     android:textColor="@color/black"
                     android:textSize="15sp" />
             </LinearLayout>
