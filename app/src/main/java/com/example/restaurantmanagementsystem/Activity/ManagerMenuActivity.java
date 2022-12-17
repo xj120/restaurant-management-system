@@ -2,7 +2,6 @@ package com.example.restaurantmanagementsystem.Activity;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.view.View;
@@ -12,15 +11,13 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.restaurantmanagementsystem.Adapter.DishAdapter;
-import com.example.restaurantmanagementsystem.Adapter.TableAdapter;
 import com.example.restaurantmanagementsystem.DatabaseHelper.DatabaseHelper;
 import com.example.restaurantmanagementsystem.Dish.Dish;
 import com.example.restaurantmanagementsystem.R;
-import com.example.restaurantmanagementsystem.Table.Table;
 
 import java.util.List;
 
-public class MenuManageActivity extends AppCompatActivity {
+public class ManagerMenuActivity extends AppCompatActivity {
 
     private DatabaseHelper dbHelper;
     private DishAdapter adapter;
@@ -38,7 +35,7 @@ public class MenuManageActivity extends AppCompatActivity {
 
         dishList = dbHelper.getDishList();
 
-        adapter = new DishAdapter(MenuManageActivity.this,
+        adapter = new DishAdapter(ManagerMenuActivity.this,
                 R.layout.menu_item, dishList, dListener, mListener);
 
         listView = (ListView) findViewById(R.id.lv_menu);
@@ -48,8 +45,8 @@ public class MenuManageActivity extends AppCompatActivity {
         dishAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                View addView = View.inflate(MenuManageActivity.this, R.layout.add_dish_layout, null);
-                AlertDialog alertDialog = new AlertDialog.Builder(MenuManageActivity.this)
+                View addView = View.inflate(ManagerMenuActivity.this, R.layout.add_dish_layout, null);
+                AlertDialog alertDialog = new AlertDialog.Builder(ManagerMenuActivity.this)
                         .setTitle("新增菜品")
                         .setView(addView)
                         .create();
@@ -61,11 +58,11 @@ public class MenuManageActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         if (dbHelper.addDish(dishName.getText().toString(), price.getText().toString())) {
-                            Toast.makeText(MenuManageActivity.this, "添加成功！", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ManagerMenuActivity.this, "添加成功！", Toast.LENGTH_SHORT).show();
                             adapter.notifyDataSetChanged();
                         }
                         else {
-                            Toast.makeText(MenuManageActivity.this, "添加失败！", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ManagerMenuActivity.this, "添加失败！", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -77,13 +74,13 @@ public class MenuManageActivity extends AppCompatActivity {
     private DishAdapter.ModifyClickListener mListener = new DishAdapter.ModifyClickListener() {
         @Override
         public void myOnClick(int position, View v) {
-            View modView = View.inflate(MenuManageActivity.this, R.layout.modify_dish_layout, null);
+            View modView = View.inflate(ManagerMenuActivity.this, R.layout.modify_dish_layout, null);
             Dish dish = dishList.get(position);
             EditText dishName = modView.findViewById(R.id.modify_dish_name);
             EditText price = modView.findViewById(R.id.modify_dish_price);
             dishName.setText(dish.getDish_name());
             price.setText(String.valueOf(dish.getPrice()));
-            AlertDialog alertDialog = new AlertDialog.Builder(MenuManageActivity.this)
+            AlertDialog alertDialog = new AlertDialog.Builder(ManagerMenuActivity.this)
                     .setTitle("修改菜品")
                     .setView(modView)
                     .create();
@@ -94,14 +91,14 @@ public class MenuManageActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     if (dbHelper.updateDish(dish.getDish_name(), dishName.getText().toString(),
                             Double.parseDouble(price.getText().toString()))) {
-                        Toast.makeText(MenuManageActivity.this, "更新成功！", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ManagerMenuActivity.this, "更新成功！", Toast.LENGTH_SHORT).show();
                         dishList.get(position).setDish_name(dishName.getText().toString());
                         dishList.get(position).setPrice(Double.parseDouble(price.getText().toString()));
 //                        adapter.notifyDataSetChanged();
                         notifyDataSetChanged(position, listView);
                     }
                     else {
-                        Toast.makeText(MenuManageActivity.this, "更新失败！", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ManagerMenuActivity.this, "更新失败！", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
@@ -114,11 +111,11 @@ public class MenuManageActivity extends AppCompatActivity {
             Dish dish = dishList.get(position);
             String name = dish.getDish_name();
             if (dbHelper.deleteDish(name)) {
-                Toast.makeText(MenuManageActivity.this, "删除成功！", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ManagerMenuActivity.this, "删除成功！", Toast.LENGTH_SHORT).show();
                 notifyDataSetChanged(position, listView);
             }
             else {
-                Toast.makeText(MenuManageActivity.this, "删除失败！", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ManagerMenuActivity.this, "删除失败！", Toast.LENGTH_SHORT).show();
             }
         }
     };

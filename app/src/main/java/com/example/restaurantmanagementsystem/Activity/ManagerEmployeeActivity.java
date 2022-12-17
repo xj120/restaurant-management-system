@@ -13,12 +13,11 @@ import android.widget.Toast;
 import com.example.restaurantmanagementsystem.Adapter.EmployeeAdapter;
 import com.example.restaurantmanagementsystem.DatabaseHelper.DatabaseHelper;
 import com.example.restaurantmanagementsystem.R;
-import com.example.restaurantmanagementsystem.Table.Table;
 import com.example.restaurantmanagementsystem.User.Employee;
 
 import java.util.List;
 
-public class EmployeeManageActivity extends AppCompatActivity {
+public class ManagerEmployeeActivity extends AppCompatActivity {
 
     private DatabaseHelper dbHelper;
     private List<Employee> employeeList;
@@ -36,7 +35,7 @@ public class EmployeeManageActivity extends AppCompatActivity {
 
         employeeList = dbHelper.getEmployeeList();
 
-        adapter = new EmployeeAdapter(EmployeeManageActivity.this,
+        adapter = new EmployeeAdapter(ManagerEmployeeActivity.this,
                 R.layout.employee_item, employeeList, mListener);
 
         listView = (ListView) findViewById(R.id.lv_employee);
@@ -46,8 +45,8 @@ public class EmployeeManageActivity extends AppCompatActivity {
         employeeAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                View addView = View.inflate(EmployeeManageActivity.this, R.layout.add_employee_layout, null);
-                AlertDialog alertDialog = new AlertDialog.Builder(EmployeeManageActivity.this)
+                View addView = View.inflate(ManagerEmployeeActivity.this, R.layout.add_employee_layout, null);
+                AlertDialog alertDialog = new AlertDialog.Builder(ManagerEmployeeActivity.this)
                         .setTitle("新增员工")
                         .setView(addView)
                         .create();
@@ -59,11 +58,11 @@ public class EmployeeManageActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View view) {
                         if (dbHelper.addEmployee(name.getText().toString(), phone.getText().toString())) {
-                            Toast.makeText(EmployeeManageActivity.this, "添加成功！", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ManagerEmployeeActivity.this, "添加成功！", Toast.LENGTH_SHORT).show();
                             adapter.notifyDataSetChanged();
                         }
                         else {
-                            Toast.makeText(EmployeeManageActivity.this, "添加失败！", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(ManagerEmployeeActivity.this, "添加失败！", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -77,11 +76,11 @@ public class EmployeeManageActivity extends AppCompatActivity {
             Employee emp = employeeList.get(position);
             int empId = emp.getUser_id();
             if (dbHelper.deleteEmployee(empId)) {
-                Toast.makeText(EmployeeManageActivity.this, "删除成功！", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ManagerEmployeeActivity.this, "删除成功！", Toast.LENGTH_SHORT).show();
                 adapter.notifyDataSetChanged();
             }
             else {
-                Toast.makeText(EmployeeManageActivity.this, "删除失败！", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ManagerEmployeeActivity.this, "删除失败！", Toast.LENGTH_SHORT).show();
             }
         }
     };

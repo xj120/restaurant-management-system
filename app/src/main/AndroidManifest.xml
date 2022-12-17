@@ -41,16 +41,16 @@
             android:name=".Activity.CustomerRegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.TableStateManageActivity"
+            android:name=".Activity.ManagerTableActivity"
             android:exported="true" />
         <activity
-            android:name=".Activity.EmployeeManageActivity"
+            android:name=".Activity.ManagerEmployeeActivity"
             android:exported="true" />
         <activity
-            android:name=".Activity.AccountsManageActivity"
+            android:name=".Activity.ManagerAccountsActivity"
             android:exported="false" />
         <activity
-            android:name=".Activity.MenuManageActivity"
+            android:name=".Activity.ManagerMenuActivity"
             android:exported="false" />
         <activity
             android:name=".Activity.MainActivity"

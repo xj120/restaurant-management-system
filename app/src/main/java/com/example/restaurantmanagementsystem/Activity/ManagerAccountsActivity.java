@@ -12,7 +12,7 @@ import com.example.restaurantmanagementsystem.R;
 
 import java.util.List;
 
-public class AccountsManageActivity extends AppCompatActivity {
+public class ManagerAccountsActivity extends AppCompatActivity {
 
     private DatabaseHelper dbHelper;
     private List<Bill> billList;
@@ -28,7 +28,7 @@ public class AccountsManageActivity extends AppCompatActivity {
 
         billList = dbHelper.getBillList();
 
-        adapter =  new BillAdapter(AccountsManageActivity.this, R.layout.account_item, billList);
+        adapter =  new BillAdapter(ManagerAccountsActivity.this, R.layout.account_item, billList);
 
         listView = (ListView) findViewById(R.id.lv_accounts);
         listView.setAdapter(adapter);

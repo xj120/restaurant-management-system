@@ -31,19 +31,19 @@ public class ManagerMainActivity extends AppCompatActivity implements View.OnCli
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.employee_manage:
-                Intent eIntent = new Intent(ManagerMainActivity.this, EmployeeManageActivity.class);
+                Intent eIntent = new Intent(ManagerMainActivity.this, ManagerEmployeeActivity.class);
                 startActivity(eIntent);
                 break;
             case R.id.table_manage:
-                Intent tIntent = new Intent(ManagerMainActivity.this, TableStateManageActivity.class);
+                Intent tIntent = new Intent(ManagerMainActivity.this, ManagerTableActivity.class);
                 startActivity(tIntent);
                 break;
             case R.id.bill_manage:
-                Intent bIntent = new Intent(ManagerMainActivity.this, AccountsManageActivity.class);
+                Intent bIntent = new Intent(ManagerMainActivity.this, ManagerAccountsActivity.class);
                 startActivity(bIntent);
                 break;
             case R.id.menu_manage:
-                Intent mIntent = new Intent(ManagerMainActivity.this, MenuManageActivity.class);
+                Intent mIntent = new Intent(ManagerMainActivity.this, ManagerMenuActivity.class);
                 startActivity(mIntent);
                 break;
             default:
