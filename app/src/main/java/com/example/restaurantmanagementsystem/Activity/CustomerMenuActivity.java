@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Parcelable;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -15,6 +17,7 @@ import com.example.restaurantmanagementsystem.DatabaseHelper.DatabaseHelper;
 import com.example.restaurantmanagementsystem.Dish.Dish;
 import com.example.restaurantmanagementsystem.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CustomerMenuActivity extends AppCompatActivity {
@@ -24,8 +27,11 @@ public class CustomerMenuActivity extends AppCompatActivity {
     private Intent gIntent;
     private int customerId;
     private MenuAdapter adapter;
-    public double totalMoney = 0;
+    private double totalMoney = 0;
     private List<Dish> orderList;
+    private Button settlement;
+    private Bundle lBundle;
+    private Intent lIntent;
 
     public static IndirectClass indirectClass;
 
@@ -39,7 +45,7 @@ public class CustomerMenuActivity extends AppCompatActivity {
         dbHelper = new DatabaseHelper(this, "Restaurant.db", null, 2);
 
         gIntent = getIntent();
-        customerId = gIntent.getIntExtra("customerId", 0);
+        customerId = gIntent.getIntExtra("customer_id", 0);
         dishList = dbHelper.getDishList();
         for (Dish dish : dishList) {
             dish.setQuantity(0);
@@ -50,6 +56,25 @@ public class CustomerMenuActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         adapter = new MenuAdapter(dishList);
         recyclerView.setAdapter(adapter);
+
+        settlement = (Button) findViewById(R.id.settlement);
+        settlement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                orderList = new ArrayList<>();
+                for (Dish dish : dishList) {
+                    if (dish.getQuantity() > 0)
+                        orderList.add(dish);
+                }
+                lIntent = new Intent(CustomerMenuActivity.this, CustomerListActivity.class);
+                lIntent.putExtra("customer_id", customerId);
+                lIntent.putExtra("total_money", totalMoney);
+                lBundle = new Bundle();
+                lBundle.putParcelableArrayList("order_list", (ArrayList<? extends Parcelable>) orderList);
+                lIntent.putExtras(lBundle);
+                startActivity(lIntent);
+            }
+        });
     }
 
     public void moreMoney(double money) {

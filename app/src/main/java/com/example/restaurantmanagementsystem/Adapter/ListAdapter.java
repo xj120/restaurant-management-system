@@ -4,13 +4,12 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.restaurantmanagementsystem.Activity.CustomerListActivity;
 import com.example.restaurantmanagementsystem.Activity.CustomerMenuActivity;
 import com.example.restaurantmanagementsystem.Activity.IndirectClass;
 import com.example.restaurantmanagementsystem.Dish.Dish;
@@ -18,9 +17,7 @@ import com.example.restaurantmanagementsystem.R;
 
 import java.util.List;
 
-
-//
-public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>{
+public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder>{
     private List<Dish> mDishList;
 
     static class ViewHolder extends RecyclerView.ViewHolder {
@@ -40,7 +37,7 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>{
         }
     }
 
-    public MenuAdapter(List<Dish> dishList) {
+    public ListAdapter(List<Dish> dishList) {
         mDishList = dishList;
     }
 
@@ -58,11 +55,11 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>{
                 if (dish.getQuantity() >= 1) {
                     dish.setQuantity(dish.getQuantity() - 1);
 
-                    IndirectClass indirect = CustomerMenuActivity.indirectClass;
+                    IndirectClass indirect = CustomerListActivity.indirectClass;
                     Context context = (Context) indirect.getContxt();
-                    CustomerMenuActivity activity = (CustomerMenuActivity) indirect.getActivity();
+                    CustomerListActivity activity = (CustomerListActivity) indirect.getActivity();
                     activity.lessMoney(dish.getPrice());
-                    activity.updateButtonColor();
+                    activity.lessAmount();
 
                     notifyDataSetChanged();
                 }
@@ -76,11 +73,11 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>{
                 Dish dish = mDishList.get(position);
                 dish.setQuantity(dish.getQuantity() + 1);
 
-                IndirectClass indirect = CustomerMenuActivity.indirectClass;
+                IndirectClass indirect = CustomerListActivity.indirectClass;
                 Context context = (Context) indirect.getContxt();
-                CustomerMenuActivity activity = (CustomerMenuActivity) indirect.getActivity();
+                CustomerListActivity activity = (CustomerListActivity) indirect.getActivity();
                 activity.moreMoney(dish.getPrice());
-                activity.updateButtonColor();
+                activity.moreAmount();
 
                 notifyDataSetChanged();
             }
