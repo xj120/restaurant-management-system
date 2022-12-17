@@ -1,14 +1,18 @@
 package com.example.restaurantmanagementsystem.Adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.restaurantmanagementsystem.Activity.CustomerMenuActivity;
+import com.example.restaurantmanagementsystem.Activity.IndirectClass;
 import com.example.restaurantmanagementsystem.Dish.Dish;
 import com.example.restaurantmanagementsystem.R;
 
@@ -44,7 +48,43 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>{
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.content_item, parent, false);
-        ViewHolder holder = new ViewHolder(view);
+        final ViewHolder holder = new ViewHolder(view);
+        holder.sub.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(view.getContext(), "click sub", Toast.LENGTH_SHORT).show();
+                int position = holder.getAbsoluteAdapterPosition();
+                Dish dish = mDishList.get(position);
+                if (dish.getQuantity() >= 1) {
+                    dish.setQuantity(dish.getQuantity() - 1);
+
+                    IndirectClass indirect = CustomerMenuActivity.indirectClass;
+                    Context context = (Context) indirect.getContxt();
+                    CustomerMenuActivity activity = (CustomerMenuActivity) indirect.getActivity();
+                    activity.lessMoney(dish.getPrice());
+                    activity.updateButtonColor();
+
+                    notifyDataSetChanged();
+                }
+            }
+        });
+        holder.add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(view.getContext(), "click add", Toast.LENGTH_SHORT).show();
+                int position = holder.getAbsoluteAdapterPosition();
+                Dish dish = mDishList.get(position);
+                dish.setQuantity(dish.getQuantity() + 1);
+
+                IndirectClass indirect = CustomerMenuActivity.indirectClass;
+                Context context = (Context) indirect.getContxt();
+                CustomerMenuActivity activity = (CustomerMenuActivity) indirect.getActivity();
+                activity.moreMoney(dish.getPrice());
+                activity.updateButtonColor();
+
+                notifyDataSetChanged();
+            }
+        });
         return holder;
     }
 
@@ -60,4 +100,5 @@ public class MenuAdapter extends RecyclerView.Adapter<MenuAdapter.ViewHolder>{
     public int getItemCount() {
         return mDishList.size();
     }
+
 }
