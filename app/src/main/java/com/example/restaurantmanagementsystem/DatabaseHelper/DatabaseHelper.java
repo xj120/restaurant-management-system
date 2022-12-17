@@ -406,7 +406,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         try{
             SQLiteDatabase db = this.getWritableDatabase();
             int maxId = 0;
-            Cursor cursor = db.query("Order", null, null, null,
+            Cursor cursor = db.query("'Order'", null, null, null,
                     null, null, null);
             if(cursor.moveToLast()) {
                 maxId = cursor.getInt(cursor.getColumnIndexOrThrow("order_id"));
@@ -429,7 +429,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             values.put("dish_name", dish.getDish_name());
             values.put("quantity", dish.getQuantity());
             values.put("price", dish.getPrice());
-            db.insert("Order", null, values);
+            db.insert("'Order'", null, values);
             return true;
         }catch (Exception e) {
             Log.e(TAG, "addOrder: add failed!", e);
