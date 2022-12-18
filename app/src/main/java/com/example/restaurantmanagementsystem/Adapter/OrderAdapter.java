@@ -50,7 +50,11 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>{
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-
+        Order order = mOrderList.get(position);
+        holder.orderId.setText(String.valueOf(order.getOrderId()));
+        holder.orderItem.setText(order.getDish().getDish_name());
+        holder.orderQuantity.setText(String.valueOf(order.getDish().getQuantity()));
+        holder.priceSum.setText(String.valueOf(order.getDish().getPrice()));
     }
 
     @Override

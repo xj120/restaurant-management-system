@@ -439,7 +439,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    private List<Order> getOrderByCustomer (int customerId) {
+    public List<Order> getOrderByCustomer (int customerId) {
         try{
             SQLiteDatabase db = this.getWritableDatabase();
             List<Order> historyOrder = new ArrayList<>();
