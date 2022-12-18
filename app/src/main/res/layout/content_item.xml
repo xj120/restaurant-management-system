@@ -11,10 +11,10 @@
         android:layout_marginBottom="10dp"
         >
         <ImageView
-            android:id="@+id/medicineIMG"
+            android:id="@+id/dishIMG"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/employee"
+            android:src="@drawable/ic_dish"
             android:scaleType="fitCenter"/>
         <LinearLayout
             android:layout_width="match_parent"
