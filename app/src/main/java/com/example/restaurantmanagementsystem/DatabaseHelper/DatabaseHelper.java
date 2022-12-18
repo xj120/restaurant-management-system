@@ -303,7 +303,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             if(cursor.moveToFirst()) {
                 do {
                     String dishName = cursor.getString(cursor.getColumnIndexOrThrow("dish_name"));
-                    double price = cursor.getInt(cursor.getColumnIndexOrThrow("price"));
+                    double price = cursor.getDouble(cursor.getColumnIndexOrThrow("price"));
                     Dish dish = new Dish(dishName, price);
                     dishList.add(dish);
                 } while (cursor.moveToNext());
