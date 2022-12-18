@@ -14,6 +14,8 @@ import com.example.restaurantmanagementsystem.Order.Order;
 import com.example.restaurantmanagementsystem.R;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -39,6 +41,7 @@ public class CustomerOrderActivity extends AppCompatActivity {
 
         orderList = dbHelper.getOrderByCustomer(customerId);
         realList = convert(orderList);
+        Collections.reverse(realList);
 
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.myHistoryOrderRecyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
