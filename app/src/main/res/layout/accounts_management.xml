@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.ManagerAccountsActivity">
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingBottom="16dp"
@@ -28,6 +28,19 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_accounts_welcome"
             android:layout_marginTop="15dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="50dp"
+            android:layout_marginLeft="15dp"
+            android:textSize="22sp"
+            android:textColor="@color/grey"
+            android:text="总营收："
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
