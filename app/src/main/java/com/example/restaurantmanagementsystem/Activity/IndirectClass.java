@@ -5,6 +5,7 @@ import android.content.Context;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+// 建立一个类用于调用其他ACTIVITY类的方法
 public class IndirectClass {
     private Context contxt;
     private AppCompatActivity activity;

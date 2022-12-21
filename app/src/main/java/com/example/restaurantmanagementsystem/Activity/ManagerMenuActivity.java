@@ -33,14 +33,17 @@ public class ManagerMenuActivity extends AppCompatActivity {
 
         dbHelper = new DatabaseHelper(this, "Restaurant.db", null, 2);
 
+        // 从数据库中获取数据源
         dishList = dbHelper.getDishList();
 
+        // 初始化适配器
         adapter = new DishAdapter(ManagerMenuActivity.this,
                 R.layout.menu_item, dishList, dListener, mListener);
 
         listView = (ListView) findViewById(R.id.lv_menu);
         listView.setAdapter(adapter);
 
+        // 监听
         dishAdd = (Button) findViewById(R.id.menu_add);
         dishAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +73,7 @@ public class ManagerMenuActivity extends AppCompatActivity {
         });
     }
 
-
+    // LISTVIEW子项的监听事件
     private DishAdapter.ModifyClickListener mListener = new DishAdapter.ModifyClickListener() {
         @Override
         public void myOnClick(int position, View v) {
@@ -105,6 +108,7 @@ public class ManagerMenuActivity extends AppCompatActivity {
         }
     };
 
+    // LISTVIEW子项的监听事件
     private DishAdapter.DeleteClickListener dListener = new DishAdapter.DeleteClickListener() {
         @Override
         public void myOnClick(int position, View v) {
@@ -120,6 +124,7 @@ public class ManagerMenuActivity extends AppCompatActivity {
         }
     };
 
+    // 提醒数据源发生变化
     private void notifyDataSetChanged(int position, ListView listView) {
         int firstVisiblePosition = listView.getFirstVisiblePosition();
         int lastVisiblePosition = listView.getLastVisiblePosition();

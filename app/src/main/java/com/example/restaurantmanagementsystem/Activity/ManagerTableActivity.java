@@ -53,14 +53,14 @@ public class ManagerTableActivity extends AppCompatActivity {
                                 if (stateList[i].equals("CLEANING")) {
                                     dbHelper.removeCustomerToTable(position + 1);
                                 }
-                                Toast.makeText(ManagerTableActivity.this, "Update success",
+                                Toast.makeText(ManagerTableActivity.this, "更新餐桌状态成功！",
                                         Toast.LENGTH_SHORT).show();
                                 tableList.get(position).setType(TableType.valueOf(stateList[i]));
 //                                adapter.notifyDataSetChanged();
                                 notifyDataSetChanged(position, listView);
                             }
                             else {
-                                Toast.makeText(ManagerTableActivity.this, "Update fail",
+                                Toast.makeText(ManagerTableActivity.this, "更新餐桌状态失败！",
                                         Toast.LENGTH_SHORT).show();
                             }
                         }

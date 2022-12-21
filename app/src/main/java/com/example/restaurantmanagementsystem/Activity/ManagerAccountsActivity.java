@@ -10,6 +10,8 @@ import com.example.restaurantmanagementsystem.Bill.Bill;
 import com.example.restaurantmanagementsystem.DatabaseHelper.DatabaseHelper;
 import com.example.restaurantmanagementsystem.R;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class ManagerAccountsActivity extends AppCompatActivity {
@@ -27,6 +29,7 @@ public class ManagerAccountsActivity extends AppCompatActivity {
         dbHelper = new DatabaseHelper(this, "Restaurant.db", null, 2);
 
         billList = dbHelper.getBillList();
+        Collections.reverse(billList);
 
         adapter =  new BillAdapter(ManagerAccountsActivity.this, R.layout.account_item, billList);
 

@@ -27,6 +27,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     private Context mContext;
 
+    // 以下为建表语句
     public static final String CREATE_CUSTOMER = "CREATE TABLE \"Customer\" (\n" +
             "  \"customer_id\" INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
             "  \"password\" TEXT NOT NULL,\n" +
@@ -101,6 +102,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
+    // 插入顾客数据
     public boolean insertCustomer(String phone, String password) {
         try{
             SQLiteDatabase db = this.getWritableDatabase();
@@ -116,6 +118,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    // 检查顾客手机号是否已存在于数据库
     public boolean checkCustomerPhone(String phone) {
         try{
             SQLiteDatabase db = this.getWritableDatabase();
@@ -135,6 +138,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    // 顾客登录检查函数
     public boolean customerLogin(String phone, String password) {
         try{
             SQLiteDatabase db = this.getWritableDatabase();
@@ -154,6 +158,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+
+    // 管理人员登录检查函数
     public boolean managerLogin(String phone, String password) {
         try{
             SQLiteDatabase db = this.getWritableDatabase();
@@ -173,6 +179,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+
+    // 得到餐桌列表
     public List<Table> getTableList() {
         try{
             SQLiteDatabase db = this.getWritableDatabase();
@@ -204,6 +212,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    // 得到员工列表
     public List<Employee> getEmployeeList() {
         try{
             SQLiteDatabase db = this.getWritableDatabase();
@@ -228,6 +237,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    // 更新餐桌的状态
     public boolean updateTableState (String state, int tableId) {
         try{
             SQLiteDatabase db = this.getWritableDatabase();
@@ -243,6 +253,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    // 删除员工
     public boolean deleteEmployee (int empId) {
         try{
             SQLiteDatabase db = this.getWritableDatabase();
@@ -255,6 +266,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    // 添加员工
     public boolean addEmployee (String name, String phone) {
         try{
             SQLiteDatabase db = this.getWritableDatabase();
@@ -270,6 +282,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    // 得到账单列表
     public List<Bill> getBillList () {
         try{
             SQLiteDatabase db = this.getWritableDatabase();
@@ -294,6 +307,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    // 得到菜单列表
     public List<Dish> getDishList () {
         try{
             SQLiteDatabase db = this.getWritableDatabase();
@@ -317,6 +331,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    // 删除菜品
     public boolean deleteDish (String dishName) {
         try{
             SQLiteDatabase db = this.getWritableDatabase();
@@ -329,6 +344,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    // 修改菜品
     public boolean updateDish (String dishName, String mdishName, double mprice) {
         try{
             SQLiteDatabase db = this.getWritableDatabase();
@@ -345,6 +361,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    // 添加菜品
     public boolean addDish (String dishName, String price) {
         try{
             SQLiteDatabase db = this.getWritableDatabase();
@@ -360,6 +377,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    // 设置顾客用餐
     public boolean setCustomerToTable (int tableId, int customerId) {
         try{
             SQLiteDatabase db = this.getWritableDatabase();
@@ -375,6 +393,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    // 用餐结束
     public boolean removeCustomerToTable (int tableId) {
         try{
             SQLiteDatabase db = this.getWritableDatabase();
@@ -388,6 +407,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    // 添加账单
     public boolean addBill (int customerId, double price) {
         try{
             SQLiteDatabase db = this.getWritableDatabase();
@@ -403,6 +423,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    // 获取最大的ORDER ID
     public int getMaxOrderId () {
         try{
             SQLiteDatabase db = this.getWritableDatabase();
@@ -421,6 +442,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    // 添加订单
     public boolean addOrder (int orderId, int customerId, Dish dish) {
         try{
             SQLiteDatabase db = this.getWritableDatabase();
@@ -439,6 +461,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    // 得到一个顾客的订单
     public List<Order> getOrderByCustomer (int customerId) {
         try{
             SQLiteDatabase db = this.getWritableDatabase();
@@ -450,7 +473,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                     int orderId = cursor.getInt(cursor.getColumnIndexOrThrow("order_id"));
                     String dishName = cursor.getString(cursor.getColumnIndexOrThrow("dish_name"));
                     int quantity = cursor.getInt(cursor.getColumnIndexOrThrow("quantity"));
-                    double price = cursor.getInt(cursor.getColumnIndexOrThrow("price"));
+                    double price = cursor.getDouble(cursor.getColumnIndexOrThrow("price"));
                     Dish dish = new Dish(dishName, price, quantity);
                     Order order = new Order(orderId, dish);
                     historyOrder.add(order);
@@ -465,6 +488,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    // 检查该顾客是否用餐中
     public boolean checkCustomerInTable (int customerId) {
         try{
             SQLiteDatabase db = this.getWritableDatabase();
@@ -485,6 +509,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
+    // 通过手机号得到该顾客的ID
     public int getCustomerIdByPhone (String phone) {
         try{
             SQLiteDatabase db = this.getWritableDatabase();

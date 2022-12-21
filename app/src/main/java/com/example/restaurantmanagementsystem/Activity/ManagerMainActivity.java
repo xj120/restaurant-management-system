@@ -16,11 +16,13 @@ public class ManagerMainActivity extends AppCompatActivity implements View.OnCli
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manager_main_layout);
 
+        // 获取实例
         Button employeeButton = (Button) findViewById(R.id.employee_manage);
         Button menuButton = (Button) findViewById(R.id.menu_manage);
         Button tableButton = (Button) findViewById(R.id.table_manage);
         Button billButton = (Button) findViewById(R.id.bill_manage);
 
+        // 监听
         employeeButton.setOnClickListener(this);
         tableButton.setOnClickListener(this);
         menuButton.setOnClickListener(this);

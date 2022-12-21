@@ -33,14 +33,17 @@ public class ManagerEmployeeActivity extends AppCompatActivity {
 
         dbHelper = new DatabaseHelper(this, "Restaurant.db", null, 2);
 
+        // 从数据库获取数据源
         employeeList = dbHelper.getEmployeeList();
 
+        // 初始化适配器
         adapter = new EmployeeAdapter(ManagerEmployeeActivity.this,
                 R.layout.employee_item, employeeList, mListener);
 
         listView = (ListView) findViewById(R.id.lv_employee);
         listView.setAdapter(adapter);
 
+        // 建立的监听事件
         employeeAdd = (Button) findViewById(R.id.employee_add);
         employeeAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +73,7 @@ public class ManagerEmployeeActivity extends AppCompatActivity {
         });
     }
 
+    // 建立LISTVIEW子项控件的监听事件
     private EmployeeAdapter.MyClickListener mListener = new EmployeeAdapter.MyClickListener() {
         @Override
         public void myOnClick(int position, View v) {

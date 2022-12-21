@@ -36,21 +36,24 @@ public class CustomerOrderActivity extends AppCompatActivity {
 
         dbHelper = new DatabaseHelper(this, "Restaurant.db", null, 2);
 
+        // 获取数据
         gIntent = getIntent();
         customerId = gIntent.getIntExtra("customer_id", 0);
 
+        // 获取数据源
         orderList = dbHelper.getOrderByCustomer(customerId);
         realList = convert(orderList);
         Collections.reverse(realList);
 
+        // 初始化适配器
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.myHistoryOrderRecyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         adapter = new OrderAdapter(realList);
         recyclerView.setAdapter(adapter);
-
     }
 
+    // 对数据源进行统一格式处理
     public List<Order> convert(List<Order> orderList) {
         realList = new ArrayList<>();
         Map<Integer, List<Order>> orderMap = splitGroup(orderList);
@@ -77,6 +80,7 @@ public class CustomerOrderActivity extends AppCompatActivity {
         return realList;
     }
 
+    // 将从数据库中获取的订单根据ID进行分组
     public Map<Integer,List<Order>> splitGroup(List<Order> orderList) {
         Map<Integer, List<Order>> map = new HashMap<>();
         for(Order order : orderList) {

@@ -25,6 +25,7 @@ public class CustomerLoginActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.customer_login_layout);
+        // 获取控件实例
         customerLoginButton = (Button) findViewById(R.id.customer_login);
         customerRegisterButton = (Button) findViewById(R.id.customer_register);
         customerAccount = (EditText) findViewById(R.id.customer_login_account);

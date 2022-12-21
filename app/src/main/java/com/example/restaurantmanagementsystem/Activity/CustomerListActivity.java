@@ -47,15 +47,17 @@ public class CustomerListActivity extends AppCompatActivity implements View.OnCl
 
         dbHelper = new DatabaseHelper(this, "Restaurant.db", null, 2);
 
+        // 获取数据
         gIntent = getIntent();
         gBundle = gIntent.getExtras();
         orderId = dbHelper.getMaxOrderId() + 1;
 
+        // 从数据库获取数据源
         orderList = gBundle.getParcelableArrayList("order_list");
         customerId = gIntent.getIntExtra("customer_id", 0);
 
         for (Dish d : orderList) {
-            totalAmount++;
+            totalAmount += d.getQuantity();
         }
         TextView totalNumber = (TextView) findViewById(R.id.totalNumber);
         totalNumber.setText(String.valueOf(totalAmount));
@@ -65,12 +67,14 @@ public class CustomerListActivity extends AppCompatActivity implements View.OnCl
         TextView totalPrice = (TextView) findViewById(R.id.totalPrice);
         totalPrice.setText(String.valueOf(totalMoney));
 
+        // 初始化适配器
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.GoodsListRecyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         adapter = new ListAdapter(orderList);
         recyclerView.setAdapter(adapter);
 
+        // 获取控件实例
         pay = (Button) findViewById(R.id.payNow);
         clear = (Button) findViewById(R.id.clearAllGoods);
         turnback = (Button) findViewById(R.id.returnBack);

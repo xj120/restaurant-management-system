@@ -24,12 +24,14 @@ public class ManagerLoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.manager_login_layout);
+        // 获取实例
         managerLoginButton = (Button) findViewById(R.id.manager_login);
         managerAccount = (EditText) findViewById(R.id.manager_login_account);
         managerPassword = (EditText) findViewById(R.id.manager_login_password);
 
         dbHelper = new DatabaseHelper(this, "Restaurant.db", null, 2);
 
+        // 监听
         managerLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

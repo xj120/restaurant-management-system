@@ -21,6 +21,7 @@ public class CustomerRegisterActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.customer_register_layout);
+        // 获取控件实例
         Button confirmRegister = (Button) findViewById(R.id.customer_register_confirm);
         EditText phone = (EditText) findViewById(R.id.customer_register_phone);
         EditText registerPassword = (EditText) findViewById(R.id.customer_register_password);
@@ -28,6 +29,7 @@ public class CustomerRegisterActivity extends AppCompatActivity{
 
         dbHelper = new DatabaseHelper(this, "Restaurant.db", null, 2);
 
+        // 注册逻辑
         confirmRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

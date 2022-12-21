@@ -30,10 +30,12 @@ public class CustomerMainActivity extends AppCompatActivity implements View.OnCl
 
         dbHelper = new DatabaseHelper(this, "Restaurant.db", null, 2);
 
+        // 获取数据
         gIntent = getIntent();
         customerId = gIntent.getIntExtra("customer_id", 0);
         tableList = dbHelper.getTableList();
 
+        // 获取控件实例
         Button orderNow = (Button) findViewById(R.id.eat_now_mode1);
         Button checkHistory = (Button) findViewById(R.id.eat_now_mode2);
 

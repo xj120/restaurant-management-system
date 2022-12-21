@@ -19,12 +19,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.initialization_layout);
 
+        // 若本地无数据库，则新建一个
         dbHelper = new DatabaseHelper(this, "Restaurant.db", null, 2);
         dbHelper.getWritableDatabase();
 
+        // 获取实例
         Button customerButton = (Button) findViewById(R.id.customer_mode);
         Button managerButton = (Button) findViewById(R.id.manager_mode);
 
+        // 设立监听事件
         customerButton.setOnClickListener(this);
         managerButton.setOnClickListener(this);
     }

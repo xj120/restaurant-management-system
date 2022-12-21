@@ -40,10 +40,12 @@ public class CustomerMenuActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.customer_menu_layout);
 
+        // 调用其他活动的方法
         indirectClass = new IndirectClass(this, CustomerMenuActivity.this);
 
         dbHelper = new DatabaseHelper(this, "Restaurant.db", null, 2);
 
+        // 获取数据源
         gIntent = getIntent();
         customerId = gIntent.getIntExtra("customer_id", 0);
         dishList = dbHelper.getDishList();
@@ -51,12 +53,14 @@ public class CustomerMenuActivity extends AppCompatActivity {
             dish.setQuantity(0);
         }
 
+        // 初始化适配器
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.contentRecyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         adapter = new MenuAdapter(dishList);
         recyclerView.setAdapter(adapter);
 
+        // 建立监听事件
         settlement = (Button) findViewById(R.id.settlement);
         settlement.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -89,6 +93,7 @@ public class CustomerMenuActivity extends AppCompatActivity {
         total.setText(String.valueOf(totalMoney));
     }
 
+    // 更新按钮颜色
     public void updateButtonColor() {
         TextView total = (TextView) findViewById(R.id.money);
         Button button = (Button) findViewById(R.id.settlement);
